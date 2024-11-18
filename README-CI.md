@@ -11,7 +11,7 @@ Then you will need to start a new container using the Node.js image you pulled, 
 - In the docker file there are instruction that tell docker what to do, first the Base Image, ours being node:18-bullseye, then setting the working directory for the container `/app`, Copy files which copies the apps source code and configuration files from the host to the container `COPY . .`, Expose port which is optionall, will expose port 4200 for the angular app, and then the RUN command will set `ng serve --host 0.0.0.0` as the default to start the app.
 - If you want to build an image from the repo, you will need to go to the repo directory that had the dockerfile `cd [path to repo]` then build the image with `docker build -t angular-site` 
 - ToDO
-- If you want to view the app running in the container you can open a web browser and go to `http://localhost:4200` if rynning locally
+- If you want to view the app running in the container you can open a web browser and go to `http://localhost:4200` if rynning locally 
 
 [DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
 
@@ -22,7 +22,7 @@ Then you will need to start a new container using the Node.js image you pulled, 
 
 - If you want to create a public repo in DockerHub, you will need to first make an account on DockerHub, once logged in go to Repositories and click "Create Repository", fill out the info with the repo name,then set to public and create.
 
-- To authenticate DockerHub with CLI, use `docker login` and then when prompted use your username and password
+- To authenticate DockerHub with CLI, use `docker login -u [DockerHub username]` and then when prompted authenticate your password
 
 - Once you want to push the container image to DockerHub you will have to do `docker push [DockerHub Username]/angular-site`
 

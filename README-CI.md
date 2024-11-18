@@ -24,6 +24,8 @@ Then you will need to start a new container using the Node.js image you pulled, 
 
 - To authenticate DockerHub with CLI, use `docker login -u [DockerHub username]` and then when prompted authenticate your password
 
+[Docker Doc Used](https://docs.docker.com/reference/cli/docker/login/)
+
 - Once you want to push the container image to DockerHub you will have to do `docker push [DockerHub Username]/angular-site`
 
 - Link to DockerHub repo[DockerHub repo](https://hub.docker.com/repository/docker/ethanschultz2/schultz-ceg3120/general)

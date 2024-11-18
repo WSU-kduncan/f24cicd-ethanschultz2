@@ -12,6 +12,8 @@ i
 
 - In the docker file there are instruction that tell docker what to do in order to create a container image.First the Base Image our build extends, ours is node:18-bullseye using `FROM node:18-bullseye`, then setting the working directory and where files will be copied and commands will be exucuted. `WORKDIR /usr/local /app`, Copy files which Copy the current directory to container image using `COPY . .`, Expose port which is optionall, will indicate which port the image will expose, and then the RUN command will tell the builder to run this command, `RUN npm install -g @angular/cl`  which will install angular and packages and dependencies needed. Finally, the CMD instruction which sets the default command a container using this image will run, in our case `ng serve --host 0.0.0.0` using `CMD ["ng", "serve", "--host", "0.0.0.0"]`
 
+[Doceker Doc Used for DockerFile](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/)
+
 - If you want to build an image from the repo, you will need to go to the repo directory that had the dockerfile `cd [path to repo]` then build the image with `docker build -t [your image name] .` this will tag your image during the build with -t
 
 - In order to run the container from the image that we build with the Docker file, we use ` docker run -d -p 4200:4200 angular-site` since we are using `ng serve --host 0.0.0.0` its listening on all ports inside the container, and angluar by default uses port 4200 to listen, so -p 4200:4200 will allow incoming traffic to port 4200 on my host to be routed to port 4200 inside the container, and -d used for detach mode starting container as background process
@@ -19,9 +21,6 @@ i
 [Docker run Doc Used](https://docs.docker.com/reference/cli/docker/container/run/)
 
 - If you want to view the app running in the container you can open a web browser and go to `http://localhost:4200`
-
-
-[DockerDoc Used](https://docs.docker.com/reference/cli/docker/)
 
 # Working with DockerHub 
 

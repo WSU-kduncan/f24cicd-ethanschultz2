@@ -6,12 +6,15 @@
 
 - In order to install docker on windows, you have to go to dockers website and download docker desktop for windows machines. 
 - To build a container without an image, you would need to pull the Node.js image in our context its node:18-bullseye.
-Then you will need to start a new container using the Node.js image you pulled `docker run --it --name angular-site`
-- You will also need to install Angular CLI inside the container with `npm install -g @angular/cli` and dependencies with `npm install`, then run the app with `ng serve --host 0.0.0.0`
+Then you will need to start a new container using the Node.js image you pulled, `docker run` creates and runs a new container, --it will take you inside the container and --name specifies container name. `docker run --it --name angular-site`
+- You will also need to install Angular CLI inside the container with `npm install -g @angular/cli` and dependencies with `npm install`, then run the app with `ng serve --host 0.0.0.0` which will run the angular app and bind to any IP.
 - In the docker file there are instruction that tell docker what to do, first the Base Image, ours being node:18-bullseye, then setting the working directory for the container `/app`, Copy files which copies the apps source code and configuration files from the host to the container `COPY . .`, Expose port which is optionall, will expose port 4200 for the angular app, and then the RUN command will set `ng serve --host 0.0.0.0` as the default to start the app.
 - If you want to build an image from the repo, you will need to go to the repo directory that had the dockerfile `cd [path to repo]` then build the image with `docker build -t angular-site` 
 - If you want to run a container from the image you built, first make sure you correclty built the image and then you need to create and start the container with `docker run -d --name [name of container] -p 4200:4200 [name of angluar app or app]`
 - If you want to view the app running in the container you can open a web browser and go to `http://localhost:4200` if rynning locally
+
+[DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
+[DockerDoc Used](https://docs.docker.com/reference/cli/docker/)
 
 # Working with DockerHub 
 

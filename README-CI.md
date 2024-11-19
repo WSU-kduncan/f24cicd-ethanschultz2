@@ -6,7 +6,7 @@ i
 
 - In order to install docker on windows, you have to go to dockers website and download docker desktop for windows machines.
  
-- To build a container without an image, you would need to pull the Node.js image in our context its node:18-bullseye.Then you will need to start a new container using the Node.js image you pulled, `docker run` creates and runs a new container, --it will take you inside the container and --name specifies container name. `docker run --it --name angular-site` [DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
+- To build a container without an image, you would need to pull the Node.js image in our context its node:18-bullseye.Then you will need to start a new container using the Node.js image you pulled, `docker run` creates and runs a new container, --it will take you inside the container and --name specifies container name. `docker run --it --name angular-site node:18-bullseye` [DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
 
 - You will also need to install Angular CLI inside the container with `sudo npm install -g @angular/cli` then you can run the app from the project folder with  `ng serve --host 0.0.0.0` which will run the angular app and bind to any IP. I tried to run the with just the above commands but got an error that some node packages may not be installed, so dont forget to `npm install` as well to download depencdencies and packages. 
 

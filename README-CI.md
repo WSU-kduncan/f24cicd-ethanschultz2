@@ -11,7 +11,7 @@ i
 - You will also need to install Angular CLI inside the container with `sudo npm install -g @angular/cli` then you can run the app from the project folder with  `ng serve --host 0.0.0.0` which will run the angular app and bind to any IP. I tried to run the with just the above commands but got an error that some node packages may not be installed, so dont forget to `npm install` as well to download depencdencies and packages. 
 
 - In the docker file there are instruction that tell docker what to do in order to create a container image.First the Base Image our build extends, ours is node:18-bullseye using `FROM node:18-bullseye`, then setting the working directory and where files will be copied and commands will be exucuted. `WORKDIR /usr/local /app`, Copy files which Copy the current directory to container image using `COPY . .`, Expose port which is optionall, will indicate which port the image will expose, and then the RUN command will tell the builder to run this command, `RUN npm install -g @angular/cl`  which will install angular and packages and dependencies needed. Finally, the CMD instruction which sets the default command a container using this image will run, in our case `ng serve --host 0.0.0.0` using `CMD ["ng", "serve", "--host", "0.0.0.0"]`
-
+- 
 [Doceker Doc Used for DockerFile](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/)
 
 - If you want to build an image from the repo, you will need to go to the repo directory that had the dockerfile `cd [path to repo]` then build the image with `docker build -t [your image name] .` this will tag your image during the build with -t
@@ -32,4 +32,10 @@ i
 
 - Once you want to push the container image to DockerHub you will have to do `docker push [DockerHub Username]/angular-site` which will push your container image to DockerHub
 
-- Link to DockerHub repo [DockerHub repo](https://hub.docker.com/repository/docker/ethanschultz2/schultz-ceg3120/general)
+- Link to DockerHub repo [DockerHub repo](https://hub.docker.com/repository/docker/ethanschultz2/schultz-ceg3120/general
+) 
+
+
+# Part 2 - GitHub Action and DockerHub
+
+

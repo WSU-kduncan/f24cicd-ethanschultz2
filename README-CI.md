@@ -36,6 +36,5 @@ i
 ) 
 
 
-# Part 2 - GitHub Action and DockerHub
 
-
+# Part 2 - Github Action and DockerHub

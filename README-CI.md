@@ -1,5 +1,6 @@
 # CI Project Overview
 
+# TODO FIX DOCUMENTATION FOR PART 1
 - In this project we are trying to containerize an application in our case an angular site in docker. We are packaging the app and its dependencies into a container. The container once finished will be able to run across different enviorments and will be much lighter weight. We are doing this so that the app can run in its own isolated container, regardless of operating systems, if you have docker installed you will be able to run the app. It is also much more efficent and scaleable, using less resources and being able to create  new containers if your load increases. Using tools like docker to build and run our application and dockerhub to store/share our images. 
 i
 # Containerizing your Application
@@ -39,4 +40,12 @@ i
 
 # Part 2 - Github Action and DockerHub 
 
-- Documentation help
+## Configuring GitHub Secrets
+- If you want to set a secret for use with GitHub actions, you will need to navigate to your Github repo where you will be building your project/workflows
+- Then go to your settings and find Secrets and variables and click on Actions. For github actions purpose in this context you will be creating a repository secret so click on repository secret.
+- Name your secret with relation to what its for .. . EX Name `DOCKER_TOKEN` and then under Secret paste your DockerHub access token and click add secret
+- I have two secrets set for this project one is `DOCKER_TOKEN` with my DockerHub access token and `DOCKER_USERNAME` with my DockerHub username
+ 
+## Behavior of GitHub workflow
+- 
+- [Documentation Used for workflow](https://github.com/marketplace/actions/build-and-push-docker-images)

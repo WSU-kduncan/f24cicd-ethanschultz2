@@ -47,5 +47,15 @@ i
 - I have two secrets set for this project one is `DOCKER_TOKEN` with my DockerHub access token and `DOCKER_USERNAME` with my DockerHub username
  
 ## Behavior of GitHub workflow
-- 
+- My workflows name is ci and will be triggered by a push event to my repository.
+- The workflow will have a job of running on ubuntu-latest GitHub Actions runner
+- The workflow will include steps to `Checkout` which will essentially clone your repo onto the GitHub actions runner and make your repos files available to accomplish builds, testing etc...
+- It will then Set up QEMU which adds emulator support in order to build against more platforms. 
+- The workflow will Set up Docker Buildx, which will create and boot a Docker buildx enviorment to allow building and pushing multiple platform Docker images
+- Then the workflow will login to DockerHub using the two secrets I created with my DockerHub username and Acess Token as password
+- The final step is for the workflow to build the Docker image from the context of the repositories root diretory and push to DockerHub tagged with `ethanschultz2/schultz-ceg3120:latest`
+- In summary the workflow will automate the process of building and pushing a Docker image to DockerHub when there is a push to the repo
+- If a user wanted to use my workflow template to duplicate my project they would first need to clone my repo, and change their secrets to make sure they have two repository secrets that acess your DockerHub username and DockerHub Private Acess Token.
+- They will also need to change some of the build and push, I used `contex: .` because my Dockerfile is in my repos rootso they will have to make sure that is the same, as well as changing their tags to be `DockerHubUsername/DockerHubRepoName:latest`
+- [WorkFlow File](https://github.com/WSU-kduncan/f24cicd-ethanschultz2/blob/main/.github/workflows/Project4.yml)
 - [Documentation Used for workflow](https://github.com/marketplace/actions/build-and-push-docker-images)

@@ -38,7 +38,7 @@ i
 
 
 
-# Part 2 - Github Action and DockerHub 
+# Part 2 - Github Actions and DockerHub 
 
 ## Configuring GitHub Secrets
 - If you want to set a secret for use with GitHub actions, you will need to navigate to your Github repo where you will be building your project/workflows
@@ -55,7 +55,16 @@ i
 - Then the workflow will login to DockerHub using the two secrets I created with my DockerHub username and Acess Token as password
 - The final step is for the workflow to build the Docker image from the context of the repositories root diretory and push to DockerHub tagged with `ethanschultz2/schultz-ceg3120:latest`
 - In summary the workflow will automate the process of building and pushing a Docker image to DockerHub when there is a push to the repo
+
+### Changes For User To Duplicate
+
 - If a user wanted to use my workflow template to duplicate my project they would first need to clone my repo, and change their secrets to make sure they have two repository secrets that acess your DockerHub username and DockerHub Private Acess Token.
-- They will also need to change some of the build and push, I used `contex: .` because my Dockerfile is in my repos rootso they will have to make sure that is the same, as well as changing their tags to be `DockerHubUsername/DockerHubRepoName:latest`
+- They will also need to change some of the build and push, I used `context: .` because my Dockerfile is in my repos root directory so they will have to make sure that their `Dockerfile` is also located in the root directory 
+
+- They will also need to change their tags to be specific to their DockerHub information `DockerHubUsername/DockerHubRepoName:latest`
+
 - [WorkFlow File](https://github.com/WSU-kduncan/f24cicd-ethanschultz2/blob/main/.github/workflows/Project4.yml)
+
+
+## Documentaion Used For Part 2
 - [Documentation Used for workflow](https://github.com/marketplace/actions/build-and-push-docker-images)

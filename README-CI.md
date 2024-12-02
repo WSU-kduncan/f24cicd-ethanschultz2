@@ -6,12 +6,19 @@ i
 # Containerizing your Application
 
 - In order to install docker on windows, you have to go to dockers website and download docker desktop for windows machines.
+
+[Docker Desktop Windows Download](https://docs.docker.com/desktop/setup/install/windows-install/)
  
 - To build a container without an image, you would need to pull the Node.js image in our context its node:18-bullseye.Then you will need to start a new container using the Node.js image you pulled, `docker run` creates and runs a new container, --it will take you inside the container and --name specifies container name. `docker run --it --name angular-site node:18-bullseye` [DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
 
 - You will also need to install Angular CLI inside the container with `sudo npm install -g @angular/cli` then you can run the app from the project folder with  `ng serve --host 0.0.0.0` which will run the angular app and bind to any IP. I tried to run the with just the above commands but got an error that some node packages may not be installed, so dont forget to `npm install` as well to download depencdencies and packages. 
 
-- In the docker file there are instruction that tell docker what to do in order to create a container image.First the Base Image our build extends, ours is node:18-bullseye using `FROM node:18-bullseye`, then setting the working directory and where files will be copied and commands will be exucuted. `WORKDIR /usr/local /app`, Copy files which Copy the current directory to container image using `COPY . .`, Expose port which is optionall, will indicate which port the image will expose, and then the RUN command will tell the builder to run this command, `RUN npm install -g @angular/cl`  which will install angular and packages and dependencies needed. Finally, the CMD instruction which sets the default command a container using this image will run, in our case `ng serve --host 0.0.0.0` using `CMD ["ng", "serve", "--host", "0.0.0.0"]`
+- In the docker file there are instruction that tell docker what to do in order to create a container image.First the Base Image our build extends, ours is node:18-bullseye using `FROM node:18-bullseye`
+- Then setting the working directory and where files will be copied and commands will be exucuted. `WORKDIR /usr/local/app`
+- After setting the working directory we use the RUN command which will tell the builder to run this command, `RUN npm install -g @angular/cl`  which will install angular and packages and dependencies needed.
+- Then we need to copy some files before running other dependencies. We use `COPY angular-site/wsu-hw-ng-main/package.json  ./` which will copy the package.json file to the current working directory inside the docker container and `COPY angular-site/wsu-hw-ng-main/package-lock.json ./` which will copy the package-lock.json to the current working directory inside the container. Originally I did not copy these two .json files and when I went to build with the dockerfile it would give me an error saying that I must first copy these json files before `RUN npm install` after doing so was able to build.
+- After copying the json files we use `RUN npm install` to install the remaining dependencies and packages, and copy the rest of the angualr app to the current working directory inside the docker container with `COPY angular-site/wsu-hw-ng-main ./`
+- Finally, the CMD instruction which sets the default command a container using this image will run, in our case `ng serve --host 0.0.0.0` using `CMD ["ng", "serve", "--host", "0.0.0.0"]`
 - 
 [Doceker Doc Used for DockerFile](https://docs.docker.com/get-started/docker-concepts/building-images/writing-a-dockerfile/)
 

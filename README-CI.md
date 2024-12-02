@@ -9,8 +9,16 @@ i
 
 [Docker Desktop Windows Download](https://docs.docker.com/desktop/setup/install/windows-install/)
  
-- To build a container without an image, you would need to pull the Node.js image in our context its node:18-bullseye.Then you will need to start a new container using the Node.js image you pulled, `docker run` creates and runs a new container, --it will take you inside the container and --name specifies container name. `docker run --it --name angular-site node:18-bullseye` [DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
+- To build a container without an image, first you will need to make sure you have docker downloaded onto your system.
+- Then you would need to pull the Node.js image in our context its node:18-bullseye.
+- After that you will need to start a new container using the Node.js image you pulled, `docker run` creates and runs a new container, --it will take you inside the container and --name specifies container name. `docker run --it --name angular-site node:18-bullseye` 
+- You will then need to add the app in the container with `docker run -it -v [path to angluar app]:/app --name angular-site node:18-bullseye` in context of my project its `sudo docker run -it -v /home/eschultz/f24cicd-ethanschultz2/angular-site/wsu-hw-ng-main --name angular-site node:18-bullseye`
+- You also need to specify which host port to bind to so you need to tack onto the previous command `-p 4200:4200` specifying the port, so the full command in the context of my project to start the container with bash will be `sudo docker run -it -v /home/eschultz/f24cicd-ethanschultz2/angular-site/wsu-hw-ng-main -p 4200:4200 --name angular-site node:18-bullseye bash`
+- This will then take you into the container where you must find the /app folder using `cd /app` and then `npm install` to install dependencies and packages and `npm start` to start the app.
 
+[DockerDoc Used](https://docs.docker.com/reference/cli/docker/container/run/#example-join-another-containers-pid-namespace)
+
+## Using Dockerfile
 - You will also need to install Angular CLI inside the container with `sudo npm install -g @angular/cli` then you can run the app from the project folder with  `ng serve --host 0.0.0.0` which will run the angular app and bind to any IP. I tried to run the with just the above commands but got an error that some node packages may not be installed, so dont forget to `npm install` as well to download depencdencies and packages. 
 
 - In the docker file there are instruction that tell docker what to do in order to create a container image.First the Base Image our build extends, ours is node:18-bullseye using `FROM node:18-bullseye`

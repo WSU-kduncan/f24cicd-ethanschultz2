@@ -1,6 +1,7 @@
 # CI Project Overview
 - In this project we are trying to containerize an application in our case an angular site in docker. We are packaging the app and its dependencies into a container. The container once finished will be able to run across different enviorments and will be much lighter weight. We are doing this so that the app can run in its own isolated container, regardless of operating systems, if you have docker installed you will be able to run the app. It is also much more efficent and scaleable, using less resources and being able to create  new containers if your load increases. Using tools like docker to build and run our application and dockerhub to store/share our images. 
 
+![Ci Workflow Diagram](images/Diagram.png)
 # Containerizing your Application
 - In order to install docker on windows, you have to go to dockers website and download docker desktop for windows machines.
 

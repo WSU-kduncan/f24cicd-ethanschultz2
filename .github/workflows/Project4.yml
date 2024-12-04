@@ -3,7 +3,7 @@ name: ci-tags
 on:
   push:
     tags:
-      -"v*.*.*"
+      - "v*.*.*"
 jobs:
   docker:
     runs-on: ubuntu-latest

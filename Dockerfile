@@ -19,6 +19,6 @@ RUN npm install
 # Copies whole  angular app from angular site to the container
 COPY angular-site/wsu-hw-ng-main ./
 
-# Starts angular when container is run from image
+#Starts angular when container is run from image
 CMD ["ng", "serve", "--host", "0.0.0.0"]
 

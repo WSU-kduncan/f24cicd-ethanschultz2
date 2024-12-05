@@ -2,7 +2,7 @@
 
 
 ## How to generate and push a tag in git
-- If you want to generate a tag in git you need to use `git tag` since we are using semantic versioning for this project it would look like `git tag v1.0.0` where the first number following the v (version) is a major version, the second number is a minor version, and the third is a patch. After taging you need to push to the repo with your specific tag you created, wiht `git push origin v1.0.0` or whatever tag version you generated.
+- If you want to generate a tag in git you need to use `git tag` since we are using semantic versioning for this project it would look like `git tag v1.0.0` where the first number following the v (version) is a major version, the second number is a minor version, and the third is a patch. After taging you need to push to the repo with your specific tag you created, with `git push origin v1.0.0` or whatever semantic versioning tag you specified.
 
 ## Behavior of Github Workflows
 - My updated github workflow is triggered when a `git tag` matches our semantic versioning pattern of `v*.*.*` is pushed to the repository.
@@ -12,7 +12,7 @@
 - Sets up `QEMU` for emulator support to build on mutiple platforms.
 - Sets up `Docker Buildx` which creates and boots a Docker buildx enviornment that allows building and pushing multi platform docker images.
 - Then it will log into DockerHub using my two github secrets that contain my username and private access token (password).
-- Finally it will then build the image in context of my repos root directory and pushed to DockerHub with the generated tags based on the semantic versioning information. As well as labeling the Docker image to help organize the images and differentiate between the images, containers etc...
+- Finally it will then build the image in the context of my repos root directory and push the image to  DockerHub with the generated tags based on the semantic versioning information you specified.As well as labeling the Docker image to help organize the images and differentiate between the images, containers etc...
 - In summary our workflow does all of the things in our previous CI workflow, but key changes made were adding semantic versioning so the workflow is triggered by a `git tag v*.*.*` and push. Then is tagged and labeled when the image is oushed to DockerHub to differentiate between versions. 
 
 

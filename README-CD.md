@@ -17,3 +17,17 @@
 
 
 [DockerHub Repo Link](https://hub.docker.com/repository/docker/ethanschultz2/schultz-ceg3120/general)
+
+
+### Part 2 - Deployment
+
+## Instance Information
+
+## How to install Docker on Ubuntu Instance
+- In order to install Docker on an ubuntu instance you will first need to update with `sudo apt-get update`
+- After updating you can install Docker with `sudo apt-get install docker.io -y` this should install Docker onto your system and you can `sudo systemctl start docker` to start Dockers service.
+- To check if Docker was successfully installed and started you can `sudo docker run hello-world` which should prompt you with a welcome message to ensure it was installed. 
+
+# Pulling and Running Container Image from DockerHub Repo
+- Assuming you downloaded docker successfully onto your instance you will need to login to docker 
+- Then use `sudo docker pull [name of DockerHub repo:tag]` in the context of my project to pull my image I used `sudo docker pull ethanschultz2/schultz-ceg3120:latest`

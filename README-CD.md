@@ -67,4 +67,4 @@
 - You will have to change two lines `ConditionPathExists=/home/ubuntu/hooks.json` is the context of my file to look for my hooks.json file in my /home/ubuntu directory. You would have to specify your own path.
 - You will also have to change to this `ExecStart=/usr/bin/webhook -nopanic -hooks /home/ubuntu/hooks.json` or where the `/home/ubuntu/hooks.json` is to your path to your hook definition file. So on start it will look for you hooks.json file to execute when booting up.
 - The difference between the webhook service file and hook definition file is that the service file is for defining how and when the webhook listener is started. It defines how to run the webhook listener application as a service. Where the hook definition file is used to define the webhooks behavior, and the events that trigger it, and how the listener shoul be handling the incoming data.
-[Webhook service file](https://github.com/WSU-kduncan/f24cicd-ethanschultz2/blob/main/deployment/webhook.service)test
+[Webhook service file](https://github.com/WSU-kduncan/f24cicd-ethanschultz2/blob/main/deployment/webhook.service)

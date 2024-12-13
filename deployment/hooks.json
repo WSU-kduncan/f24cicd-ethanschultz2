@@ -1,0 +1,30 @@
+[
+  {
+    "id": "birdsite",
+    "execute-command": "/home/ubuntu/myScript",
+    "command-working-directory": "/home/ubuntu"
+   },
+   {
+    "id": "jazz",
+    "execute-command": "/home/ubuntu/myScript",
+    "pass-arguments-to-command": [
+            {
+                    "source": "entire-payload"
+            }
+    ],
+    "trigger-rule": {
+            "and": [
+                    {
+                            "match": {
+                                    "type": "value",
+                                    "value": "latest",
+                                    "parameter": {
+                                            "source": "payload",
+                                            "name": "push_data.tag"
+                                    }
+                            }
+                    }
+            ]
+           }
+  }
+]

@@ -21,11 +21,11 @@
 [DockerHub Repo Link](https://hub.docker.com/repository/docker/ethanschultz2/schultz-ceg3120/general)
 
 
-# Part 2 - Deployment
+# Pairt 2 - Deployment
 
 ## Instance Information
 - Using Ubuntu 24.04.1 LTS 
-- Instances Public IP is 54.234.232.100
+- Instances Public IP is 34.193.87.63
 ## How to install Docker on Ubuntu Instance
 - In order to install Docker on an ubuntu instance you will first need to update with `sudo apt-get update`
 - After updating you can install Docker with `sudo apt-get install docker.io -y` this should install Docker onto your system and you can `sudo systemctl start docker` to start Dockers service.

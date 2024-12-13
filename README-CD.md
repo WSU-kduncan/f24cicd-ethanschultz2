@@ -40,8 +40,18 @@
 - Then you will need to make it executable with `sudo chmod +x [path to webhook]`
 - Once you have it installed on your system and made it executable you will need to make a `hooks.json` file that will configure what your webhook(s) will do.
 - You will in your security groups for instance also need to allow for ports 80(HTTP) and 9000(Port that webhook listen to) to be open.
+- [Bash Script](https://github.com/WSU-kduncan/f24cicd-ethanschultz2/blob/main/deployment/myScript)
+
 ## Purpose of installing webhook to instance
 - We installed webhook in order to recieve HTTP requests and be able to trigger an action of our choice. In our case it will trigger our bash script that updates to latest version and runs that version.
 - Our other trigger `jazz` will trigger when pushed with latest tagged.
 - Webhook task definition file is located at `/home/ubuntu/hooks.json`
+- [Hooks Def File](https://github.com/WSU-kduncan/f24cicd-ethanschultz2/blob/main/deployment/hooks.json)
 
+## How to start webhook listenting 
+- Once you have configured your webhook to do what you want you can use this `webhook -hooks hooks.json -verbose` if you have a file named hooks.json and it will start listening on port 9000.
+
+## How to test that the listener is successful
+- You should have to first make a version change and `git tag` with a version and push to that origin and main to keep up to date for it to trigger.
+- When you first run your webhooks command it should log to you different things that are set up you should look for `attempted to load hooks from hooks.json` and if it says `found (2) hooks in file` and in my context they are `birdsite` and `jazz` it will say that its serving hooks at ` http://0.0.0.0:9000/hooks/{id}` you want to put you public ip in for the `0.0.0.0` and `jazz or birdsite` for the `{id}`.
+- Once you put that into your browser you should look back as logs should be coming in you should mainly be looking for the HTTP request, which hook is being triggered and the execution of that command. If there are any errors that happen in the logs it should tell you where and what is going wrong.

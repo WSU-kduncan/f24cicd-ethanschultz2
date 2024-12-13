@@ -73,4 +73,4 @@
 
 
 ## Implementation
-- Im not exactly sure  
+- Im not exactly sure why its not showing up in my browser the event from the logs seems to be handling birdsite sucessfully as well as jazz but im not sure why its not showing in the browser. 

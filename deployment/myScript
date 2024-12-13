@@ -1,0 +1,18 @@
+#!/bin/bash
+
+DOCKER_USERNAME="ethanschultz2"
+DOCKER_REPO="ethanschultz2/schultz-ceg3120"
+DOCKER_IMAGE="ethanschultz2/schultz-ceg3120:latest"
+
+#stopping old container
+echo "Stopping old container"
+docker stop birdsite
+
+# Pulling newest version of latest
+echo "Pulling newest version of image"
+docker pull "$DOCKER_IMAGE"
+
+# run from latest
+echo "Trying to run latest version"
+docker run -d --name birdsite --rm -p 80:4200 "$DOCKER_IMAGE"
+

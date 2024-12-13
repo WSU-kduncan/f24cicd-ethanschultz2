@@ -37,7 +37,7 @@
 - Then starts a new container and runs the latest version of it, keeping a running up to date version of the container.
 - The location of my bash script is `/home/ubuntu/myScript`
 
-##Steps to install webhooks on instance
+## Steps to install webhooks on instance
 - First ssh into your instance, once youre in you should `sudo apt update` barring that you need to clone `adnanh`'s repo in order for you to have on your system
 - Then you will need to make it executable with `sudo chmod +x [path to webhook]`
 - Once you have it installed on your system and made it executable you will need to make a `hooks.json` file that will configure what your webhook(s) will do.

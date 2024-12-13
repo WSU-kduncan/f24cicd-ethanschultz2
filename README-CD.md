@@ -54,4 +54,17 @@
 ## How to test that the listener is successful
 - You should have to first make a version change and `git tag` with a version and push to that origin and main to keep up to date for it to trigger.
 - When you first run your webhooks command it should log to you different things that are set up you should look for `attempted to load hooks from hooks.json` and if it says `found (2) hooks in file` and in my context they are `birdsite` and `jazz` it will say that its serving hooks at ` http://0.0.0.0:9000/hooks/{id}` you want to put you public ip in for the `0.0.0.0` and `jazz or birdsite` for the `{id}`.
-- Once you put that into your browser you should look back as logs should be coming in you should mainly be looking for the HTTP request, which hook is being triggered and the execution of that command. If there are any errors that happen in the logs it should tell you where and what is going wrong.
+- Once you put that into your browser you should look back as logs should be coming in you should mainly be looking for the incoming HTTP request, which hook is being triggered and the execution of that command. If there are any errors that happen in the logs it should tell you where and what is going wrong. If things are going correctly you should see that the hook has been triggered its stopping the old container, pulling the latest version of the image, and running the latest version it pulled.
+- From DockerHub you should be able to see the newest versions of the images being pushed which is a good sign that you hook has been triggered and running you hooks.json file.
+
+## How to configure GitHub OR DockerHub to message
+- In your GitHub repo you can go to `settings` then on the left hand side go to `Webhooks` click on `add webhook` 
+- You will need to paste you payload url like the settup for ` http://0.0.0.0:9000/hooks/{id}` you can configure a secret if you would like so you can verify the request is from GitHub. And waht even you would like for this to be triggered by.
+- On DockerHub you need to go to your repository and towards the top left where `tags` is you should see `Weebhooks`, similar to that of GitHub you will need to provide this one with a name for what its doing and the `http://0.0.0.0:9000/hooks/{id}` correct url. It then will be triggered by pushing with the latest tag.
+
+## Configuring webhook to listen as soon as the system is booted
+- In order to make your webhook listener listen as soon as your system boots you need to modify the `/usr/lib/systemd/system/webhook.service` file. 
+- You will have to change two lines `ConditionPathExists=/home/ubuntu/hooks.json` is the context of my file to look for my hooks.json file in my /home/ubuntu directory. You would have to specify your own path.
+- You will also have to change to this `ExecStart=/usr/bin/webhook -nopanic -hooks /home/ubuntu/hooks.json` or where the `/home/ubuntu/hooks.json` is to your path to your hook definition file. So on start it will look for you hooks.json file to execute when booting up.
+- The difference between the webhook service file and hook definition file is that the service file is for defining how and when the webhook listener is started. It defines how to run the webhook listener application as a service. Where the hook definition file is used to define the webhooks behavior, and the events that trigger it, and how the listener shoul be handling the incoming data.
+[Webhook service file]

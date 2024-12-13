@@ -1,5 +1,7 @@
 # CD Project Overview
+- The goal of this project is to implement Continuos Deployment on an EC2 instance for me being ubuntu. Using Docker, webhooks, and a Bash script to automate the process of updating and running the latest version of our containerized application. Webhooks play a crucial role in triggering updates by listening for push events, in our case for semantic version tags of latest and automatically initiate the deployment workflow. This ensures that our application is always up to date without manually having to do things everytime we make a change, making things more efficient.
 
+![Diagram Flow](images/CD.png)
 
 ## How to generate and push a tag in git
 - If you want to generate a tag in git you need to use `git tag` since we are using semantic versioning for this project it would look like `git tag v1.0.0` where the first number following the v (version) is a major version, the second number is a minor version, and the third is a patch. After taging you need to push to the repo with your specific tag you created, with `git push origin v1.0.0` or whatever semantic versioning tag you specified.

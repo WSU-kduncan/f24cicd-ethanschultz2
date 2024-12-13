@@ -30,5 +30,18 @@
 - To check if Docker was successfully installed and started you can `sudo docker run hello-world` which should prompt you with a welcome message to ensure it was installed. 
 
 # Bash Script
+- The purpose of this bash script is to automate the process of updating a docker container and running it.
+- It will first stop the container `birdsite` in my case and pull the latest version of the docker image from DockerHub.
+- Then starts a new container and runs the latest version of it, keeping a running up to date version of the container.
+- The location of my bash script is `/home/ubuntu/myScript`
 
-## Purpose
+##Steps to install webhooks on instance
+- First ssh into your instance, once youre in you should `sudo apt update` barring that you need to clone `adnanh`'s repo in order for you to have on your system
+- Then you will need to make it executable with `sudo chmod +x [path to webhook]`
+- Once you have it installed on your system and made it executable you will need to make a `hooks.json` file that will configure what your webhook(s) will do.
+- You will in your security groups for instance also need to allow for ports 80(HTTP) and 9000(Port that webhook listen to) to be open.
+## Purpose of installing webhook to instance
+- We installed webhook in order to recieve HTTP requests and be able to trigger an action of our choice. In our case it will trigger our bash script that updates to latest version and runs that version.
+- Our other trigger `jazz` will trigger when pushed with latest tagged.
+- Webhook task definition file is located at `/home/ubuntu/hooks.json`
+

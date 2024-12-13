@@ -21,7 +21,7 @@
 [DockerHub Repo Link](https://hub.docker.com/repository/docker/ethanschultz2/schultz-ceg3120/general)
 
 
-### Part 2 - Deployment
+# Part 2 - Deployment
 
 ## Instance Information
 - Using Ubuntu 24.04.1 LTS 
@@ -31,7 +31,7 @@
 - After updating you can install Docker with `sudo apt-get install docker.io -y` this should install Docker onto your system and you can `sudo systemctl start docker` to start Dockers service.
 - To check if Docker was successfully installed and started you can `sudo docker run hello-world` which should prompt you with a welcome message to ensure it was installed. 
 
-# Bash Script
+## Bash Script
 - The purpose of this bash script is to automate the process of updating a docker container and running it.
 - It will first stop the container `birdsite` in my case and pull the latest version of the docker image from DockerHub.
 - Then starts a new container and runs the latest version of it, keeping a running up to date version of the container.
